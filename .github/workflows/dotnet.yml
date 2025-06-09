@@ -37,14 +37,17 @@ jobs:
     needs: build 
 
     steps:
-    - uses: actions/checkout@v4
+    - name: checkout repositiory
+      uses: actions/checkout@v4
+       # already prepared action
+
+    # steps are consecutively executed and can be already preapred actions or shell commands
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Restore dependencies, buld and test
+      run: |
+        dotnet restore
+        dotnet build --no-restore
+        dotnet test --no-build --verbosity normal
