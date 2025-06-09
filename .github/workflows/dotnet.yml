@@ -4,15 +4,19 @@
 name: .NET
 
 on:
+  # schedule: 
+  #   - cron: '0 * * * *' // runs at the top of every hour
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch:
+  # allows for manual start
+  workflow_dispatch: 
+
+
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -25,5 +29,13 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+
+  # jobs run parallel 
+  test: 
+    runs-on: ubuntu-latest
+    # awaits for the build job to end, before it is executed
+    needs: build 
+
+    steps:
     - name: Test
       run: dotnet test --no-build --verbosity normal
