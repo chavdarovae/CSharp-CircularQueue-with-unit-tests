@@ -117,7 +117,7 @@ namespace CircularQueue.Tests
         [Test]
         public void Test_Method_Peek()
         {
-            queue.Enqueue(1);
+            queue.Enqueue(10);
             queue.Enqueue(20);
             queue.Enqueue(30);
             queue.Enqueue(40);
