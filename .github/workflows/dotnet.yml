@@ -41,7 +41,7 @@ jobs:
       uses: actions/checkout@v4
        # already prepared action
 
-    # steps are consecutively executed and can be already preapred actions or shell commands
+    # steps are consecutively executed and can be already preapred actions or shell commands test
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
